@@ -1,0 +1,29 @@
+<mat-toolbar [ngClass]="{'toolbar-backdrop': drawer.opened === true}">
+    <mat-icon class="menu-button" (click)="drawer.toggle()">
+        menu
+    </mat-icon>
+</mat-toolbar>
+<mat-sidenav-container hasBackdrop="true">
+    <mat-sidenav #drawer mode="over" class="drawer">
+        <div role="button" class="close-button" (click)="drawer.toggle()">
+            X
+        </div>
+        <mat-nav-list>
+            <mat-list-item>
+                <a matListItemTitle class="drawer-item" routerLink="home" (click)="drawer.toggle()">
+                    <mat-icon>home</mat-icon>
+                    Início
+                </a>
+            </mat-list-item>
+            <mat-list-item>
+                <a matListItemTitle class="drawer-item" routerLink="products" (click)="drawer.toggle()">
+                    <mat-icon>album</mat-icon>
+                    Produtos
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
