@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Album } from 'src/app/models/Album.model';
 import { AlbumService } from 'src/app/services/album.service';
 
@@ -7,36 +7,27 @@ import { AlbumService } from 'src/app/services/album.service';
   templateUrl: './create-product-page.component.html',
   styleUrls: ['./create-product-page.component.scss']
 })
-export class CreateProductPageComponent implements OnInit{
-    @Input() formData!: Album;
-    @Output() submitAlbum = new EventEmitter<Album>();
-    form!: FormGroup;
+export class CreateProductPageComponent{
+    formData = {} as Album;
 
     constructor(
-        private formBuilder: FormBuilder
-    ){}
+        private albumService: AlbumService,
+        private snackBar: MatSnackBar,
+    ) {}
 
-    ngOnInit(): void {
-        this.initForm();
+    onSubmit(event: Album) {
+        this.postAlbum(event);
     }
 
-    initForm(): void {
-        this.form = this.formBuilder.group({
-            name: [this.formData.name, Validators.required],
-            artist: [this.formData.artist, Validators.required],
-            releaseDate: [this.formData.releaseDate, Validators.required]
+    postAlbum(album: Album) {
+        this.albumService.createAlbum(album).subscribe(() => {
+            this.openSnackBar("Album Criado com sucesso!");
         })
     }
 
-    onSubmit(formDirective: any): void {
-        if(this.form.valid) {
-            const request: Album = {
-                name: this.form.controls['name'].value,
-                artist: this.form.controls['name'].value,
-                releaseDate: this.form.controls['name'].value
-            }
-        }
-
-        this.
+    openSnackBar(message: string): void {
+        this.snackBar.open(message, 'Fechar', {
+            duration: 5000,
+        })
     }
 }

@@ -1,15 +1,1 @@
-<form #formDirective="ngForm" [formGroup]="form" (ngSubmit)="onSubmit(formDirective)">
-    <mat-form-field>
-        <mat-label>Nome</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Artista</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Data de Lançamento</mat-label>
-        <mat-hint>DD/MM/AAAA</mat-hint>
-        <input type="date" matInput>
-    </mat-form-field>
-</form>
+<app-product-create-form-page [formData]="formData" (submitAlbum)="onSubmit($event)" />

@@ -6,17 +6,22 @@ import { CreateProductPageComponent } from './create-product-page/create-product
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductCreateFormPageComponent } from './product-create-form-page/product-create-form-page.component';
+import { MatButtonModule } from '@angular/material/button'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 
 @NgModule({
-  declarations: [ProductPageComponent, CreateProductPageComponent],
+  declarations: [ProductPageComponent, CreateProductPageComponent, ProductCreateFormPageComponent],
   imports: [
     CommonModule,
     ProductPageRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatSnackBarModule,
   ]
 })
 export class ProductPageModule { }
