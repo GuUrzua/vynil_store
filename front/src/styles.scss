@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
+
+$font-vynil: 'Rubik Vinyl', cursive;
+
+html, body {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: 'Pompiere', sans-serif;
+  color: #FFFFFF;
+}
