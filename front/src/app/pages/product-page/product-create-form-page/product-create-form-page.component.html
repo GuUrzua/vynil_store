@@ -1,18 +1,34 @@
-<form #formDirective="ngForm" [formGroup]="form" (ngSubmit)="onSubmit(formDirective)">
-    <mat-form-field>
-        <mat-label>Nome</mat-label>
-        <input matInput formControlName="name">
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Artista</mat-label>
-        <input matInput formControlName="artist">
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Data de Lançamento</mat-label>
-        <mat-hint>DD/MM/AAAA</mat-hint>
-        <input type="date" matInput formControlName="releaseDate">
-    </mat-form-field>
-    <button mat-raised-button type="submit">
-        Create
-    </button>
-</form>
+<mat-card>
+    <h1>
+        Cadastro de Álbum
+    </h1>
+    <mat-card-content>
+        <form #formDirective="ngForm" [formGroup]="form" (ngSubmit)="onSubmit(formDirective)">
+            <mat-form-field>
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Artista</mat-label>
+                <input matInput formControlName="artist">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Data de Lançamento</mat-label>
+                <mat-hint>DD/MM/AAAA</mat-hint>
+                <input type="date" matInput formControlName="releaseDate">
+            </mat-form-field>
+            <mat-form-field class="file-form-field">
+                <button type="button" mat-button class="file-button" (click)="file_input.click()">
+                    <mat-icon>attach_file</mat-icon>
+                    <span>Choose File</span>
+                </button>
+                <input hidden type="text" matInput formControlName="albumCover">
+                <input hidden type="file" accept="image/*" #file_input (change)="handleFileInput(file_input.files)" />
+                <mat-hint>{{displayFileName}}</mat-hint>
+            </mat-form-field>
+            <button mat-raised-button type="submit">
+                Create
+            </button>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -1,10 +1,11 @@
-@use '../../../styles.scss';
+@import '../../../styles.scss';
 
 mat-toolbar {
   padding: 10px;
   display: flex;
   align-items: flex-start;
   height: 10vh;
+  background-color: #d1d1d1;
 }
 
 .toolbar-backdrop {
@@ -74,4 +75,11 @@ mat-icon {
 mat-sidenav-content {
     display: flex;
     height: 90vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+mat-sidenav-container {
+    background-color: $background-color;
 }

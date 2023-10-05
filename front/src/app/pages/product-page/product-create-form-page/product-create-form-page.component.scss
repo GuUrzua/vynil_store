@@ -1,0 +1,41 @@
+@import '/src/styles.scss';
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    column-gap: 50px;
+    row-gap: 30px;
+    padding: 1.5em;
+}
+
+button {
+    width: 30%;
+    justify-self: center;
+}
+
+.file-button {
+    width: 100%;
+    height: 56px;
+    font-size: large;
+    text-align: center;
+}
+
+::ng-deep .file-form-field .mdc-line-ripple {
+    display: none;
+}
+
+::ng-deep .file-form-field .mdc-text-field {
+    padding: 0;
+}
+
+::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix{
+    padding: 0;
+}
+
+mat-form-field {
+    width: 90%;
+}
