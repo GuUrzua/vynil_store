@@ -9,8 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductCreateFormPageComponent } from './product-create-form-page/product-create-form-page.component';
 import { MatButtonModule } from '@angular/material/button'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
-import { MatCardModule } from '@angular/material/card'
-import { MatIconModule } from '@angular/material/icon'
+
 
 @NgModule({
   declarations: [ProductPageComponent, CreateProductPageComponent, ProductCreateFormPageComponent],
@@ -23,8 +22,6 @@ import { MatIconModule } from '@angular/material/icon'
     ReactiveFormsModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatCardModule,
-    MatIconModule,
   ]
 })
 export class ProductPageModule { }
