@@ -3,3 +3,9 @@
         Create Album
     </button>
 </a>
+<div class="mat-card-container">
+    <div *ngFor="let album of albums">
+        <app-product-card [album]="album">
+        </app-product-card>
+    </div>
+</div>

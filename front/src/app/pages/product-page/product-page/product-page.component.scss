@@ -4,4 +4,17 @@ button {
     font-size: 10px;
     color: black;
     background-color: white;
+    position: sticky;
+    top: 3vh;
+    left: 80vw;
+}
+
+.mat-card-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 10px;
+    width: 80vw;
+    justify-items: center;
+    align-items: center;
+	margin: 5vh 0vw 10vh;
 }
