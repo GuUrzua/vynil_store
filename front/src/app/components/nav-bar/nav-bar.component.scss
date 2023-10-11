@@ -74,7 +74,7 @@ mat-icon {
 
 mat-sidenav-content {
     display: flex;
-    height: 90vh;
+    min-height: 90vh;
     width: 100vw;
     align-items: center;
     justify-content: center;

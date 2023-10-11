@@ -2,13 +2,20 @@ package com.vynilStore.vynilStore.services;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.vynilStore.vynilStore.DTO.AlbumDTO;
+import com.vynilStore.vynilStore.DTO.DownloadAlbumDTO;
+import com.vynilStore.vynilStore.DTO.UploadAlbumDTO;
 import com.vynilStore.vynilStore.entity.Album;
 import com.vynilStore.vynilStore.repository.AlbumRepository;
 
@@ -20,7 +27,7 @@ public class AlbumService {
     @Autowired
     private AlbumRepository albumRepository;
 
-    public Album createAlbum(AlbumDTO albumDTO) throws IOException {
+    public Album createAlbum(UploadAlbumDTO albumDTO) throws IOException {
         val imageData = compressImage(albumDTO.getAlbumCover().getBytes());
         Album album = Album.builder()
                 .artist(albumDTO.getArtist())
@@ -29,6 +36,20 @@ public class AlbumService {
                 .releaseDate(albumDTO.getReleaseDate())
                 .build();
         return albumRepository.save(album);
+    }
+
+    public List<DownloadAlbumDTO> getAlbums() {
+        List<Album> album = this.albumRepository.findAll();
+        return album.stream().map(a -> {
+            byte[] decompressedImage = decompressImage(a.getAlbumCover());
+            String base64 = Base64.getEncoder().encodeToString(decompressedImage);
+            return DownloadAlbumDTO.builder()
+                        .artist(a.getArtist())
+                        .name(a.getName())
+                        .albumCover(base64)
+                        .releaseDate(a.getReleaseDate())
+                        .build();
+        }).collect(Collectors.toList());
     }
 
     private byte[] compressImage(byte[] data) {

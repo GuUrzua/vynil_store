@@ -10,10 +10,11 @@ import { ProductCreateFormPageComponent } from './product-create-form-page/produ
 import { MatButtonModule } from '@angular/material/button'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatCardModule } from '@angular/material/card'
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { ProductCardComponent } from './product-card/product-card.component'
 
 @NgModule({
-  declarations: [ProductPageComponent, CreateProductPageComponent, ProductCreateFormPageComponent],
+  declarations: [ProductPageComponent, CreateProductPageComponent, ProductCreateFormPageComponent, ProductCardComponent],
   imports: [
     CommonModule,
     ProductPageRoutingModule,
