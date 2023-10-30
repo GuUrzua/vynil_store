@@ -5,18 +5,14 @@
     <mat-card-content>
         <form #formDirective="ngForm" [formGroup]="form" (ngSubmit)="onSubmit(formDirective)">
             <mat-form-field>
-                <mat-label>Nome</mat-label>
+                <mat-label class="album_name">Nome</mat-label>
                 <input matInput formControlName="name">
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field class="album_artist">
                 <mat-label>Artista</mat-label>
                 <input matInput formControlName="artist">
             </mat-form-field>
-            <mat-form-field>
-                <mat-label>Data de Lançamento</mat-label>
-                <mat-hint>DD/MM/AAAA</mat-hint>
-                <input type="date" matInput formControlName="releaseDate">
-            </mat-form-field>
+
             <mat-form-field class="file-form-field">
                 <button type="button" mat-button class="file-button" (click)="file_input.click()">
                     <mat-icon>attach_file</mat-icon>
@@ -26,9 +22,15 @@
                 <input hidden type="file" accept="image/*" #file_input (change)="handleFileInput(file_input.files)" />
                 <mat-hint>{{displayFileName}}</mat-hint>
             </mat-form-field>
-            <button mat-raised-button type="submit">
+            <mat-form-field class="album_release-date">
+                <mat-label>Data de Lançamento</mat-label>
+                <mat-hint>DD/MM/AAAA</mat-hint>
+                <input type="date" matInput formControlName="releaseDate">
+            </mat-form-field>
+            <button class="button_create" mat-raised-button type="submit">
                 Create
             </button>
+
         </form>
     </mat-card-content>
 </mat-card>

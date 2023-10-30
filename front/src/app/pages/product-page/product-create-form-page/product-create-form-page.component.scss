@@ -6,15 +6,20 @@ h1 {
 
 form {
     display: grid;
-    grid-template-columns: 300px 300px;
+    grid-template-columns: 300px 300px 200px;
     column-gap: 50px;
     row-gap: 30px;
     padding: 1.5em;
 }
 
+.album_release-date {
+    grid-column: 2;
+}
+
 button {
     width: 30%;
-    justify-self: center;
+    justify-self: left;
+    grid-column: 1;
 }
 
 .file-button {
@@ -22,6 +27,10 @@ button {
     height: 56px;
     font-size: large;
     text-align: center;
+}
+
+.file-form-field {
+    grid-column: 1;
 }
 
 ::ng-deep .file-form-field .mdc-line-ripple {

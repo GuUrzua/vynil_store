@@ -2,9 +2,6 @@ package com.vynilStore.vynilStore.services;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,11 +41,11 @@ public class AlbumService {
             byte[] decompressedImage = decompressImage(a.getAlbumCover());
             String base64 = Base64.getEncoder().encodeToString(decompressedImage);
             return DownloadAlbumDTO.builder()
-                        .artist(a.getArtist())
-                        .name(a.getName())
-                        .albumCover(base64)
-                        .releaseDate(a.getReleaseDate())
-                        .build();
+                    .artist(a.getArtist())
+                    .name(a.getName())
+                    .albumCover(base64)
+                    .releaseDate(a.getReleaseDate())
+                    .build();
         }).collect(Collectors.toList());
     }
 
