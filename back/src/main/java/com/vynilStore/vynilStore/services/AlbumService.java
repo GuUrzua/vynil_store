@@ -26,6 +26,7 @@ public class AlbumService {
 
     public Album createAlbum(UploadAlbumDTO albumDTO) throws IOException {
         val imageData = compressImage(albumDTO.getAlbumCover().getBytes());
+
         Album album = Album.builder()
                 .artist(albumDTO.getArtist())
                 .albumCover(imageData)
@@ -45,6 +46,7 @@ public class AlbumService {
                     .name(a.getName())
                     .albumCover(base64)
                     .releaseDate(a.getReleaseDate())
+                    .songs(null)
                     .build();
         }).collect(Collectors.toList());
     }
@@ -87,5 +89,10 @@ public class AlbumService {
         }
 
         return outputStream.toByteArray();
+    }
+
+    public Album getAlbumByName(String albumName) {
+        Album album = this.albumRepository.findByName(albumName);
+        return album;
     }
 }

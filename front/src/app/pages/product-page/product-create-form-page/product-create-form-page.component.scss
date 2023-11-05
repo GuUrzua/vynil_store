@@ -4,16 +4,53 @@ h1 {
     text-align: center;
 }
 
+.mat-mdc-form-field {
+    display: block;
+}
+
+.header-field {
+    grid-area: header-field;
+}
+
+.name-form-field {
+    grid-area: name-form-field;
+}
+
+.artist-form-field {
+    grid-area: artist-form-field;
+}
+
+.song-list {
+    width: 25vw;
+    height: 60vh;
+    grid-area: song-list;
+}
+
+.file-form-field {
+    grid-area: file-form-field;
+}
+
+.release-date-form-field {
+    grid-area: release-date-form-field;
+}
+
+.create-button {
+    grid-area: create-button;
+}
+
 form {
     display: grid;
-    grid-template-columns: 300px 300px 200px;
+    grid-template-columns: 300px 300px 300px;
     column-gap: 50px;
     row-gap: 30px;
     padding: 1.5em;
-}
-
-.album_release-date {
-    grid-column: 2;
+    grid-template-areas:
+    "header-field header-field song-list"
+    "name-form-field artist-form-field song-list"
+    "file-form-field release-date-form-field song-list"
+    "create-button none none";
+    align-items: center;
+    justify-items: center;
 }
 
 button {
@@ -27,10 +64,6 @@ button {
     height: 56px;
     font-size: large;
     text-align: center;
-}
-
-.file-form-field {
-    grid-column: 1;
 }
 
 ::ng-deep .file-form-field .mdc-line-ripple {
@@ -48,3 +81,4 @@ button {
 mat-form-field {
     width: 90%;
 }
+

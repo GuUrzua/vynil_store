@@ -1,0 +1,29 @@
+h4 {
+    margin-top: 0;
+}
+
+.songs-container {
+    display: flex;
+}
+
+.song-name-form-field {
+    width: 180px;
+    height: 70px;
+    margin-right: 10px;
+}
+
+.song-duration-form-field {
+    width: 80px;
+    height: 70px;
+}
+
+.add_button {
+    text-align: center;
+    font-size: 10px
+}
+
+.song-list {
+    height: 50vh;
+    max-height: 50vh;
+    overflow-y: scroll;
+}
