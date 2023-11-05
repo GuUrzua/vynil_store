@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.vynilStore.vynilStore.entity.Album;
 
 @Repository
-public interface AlbumRepository extends JpaRepository<Album, Integer>{
+public interface AlbumRepository extends JpaRepository<Album, Integer> {
+
+    Album findByName(String albumName);
 }

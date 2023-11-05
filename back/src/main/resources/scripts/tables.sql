@@ -1,0 +1,30 @@
+USE [Vynil_Store]
+GO
+
+/****** Object:  Table [dbo].[TB_ALBUM]    Script Date: 26/10/2023 22:19:07 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TB_ALBUM](
+	[ID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[NAME] [varchar](255) NULL,
+	[ARTIST] [varchar](255) NULL,
+	[RELEASE_DATE] [date] NULL,
+	[ALBUM_COVER] [varbinary](max) NULL,
+)
+GO;
+
+GO
+CREATE TABLE [dbo].[TB_SONGS](
+	ID_SONG int IDENTITY(1, 1) NOT NULL PRIMARY KEY,
+	SONG_TITLE varchar(255) NOT NULL,
+	SONG_DURATION time NOT NULL,
+	ID_ALBUM int NOT NULL,
+	FOREIGN KEY (ID_ALBUM) REFERENCES [dbo].[TB_ALBUM](ID)
+	)
+
+
+DROP TABLE TB_SONGS

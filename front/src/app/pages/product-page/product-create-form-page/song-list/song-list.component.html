@@ -1,0 +1,21 @@
+<h4>Adicionar músicas:</h4>
+<form #formDirective="ngForm" [formGroup]="form" class="songs-container">
+    <mat-form-field class="song-name-form-field">
+        <mat-label>Nome da música</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="song-duration-form-field">
+        <mat-label>Duração</mat-label>
+        <input type="time" (input)="formatTime()" matInput formControlName="duration">
+    </mat-form-field>
+    <button class="add_button" mat-icon-button (click)="addSong()">
+        <mat-icon>
+            playlist_add
+        </mat-icon>
+    </button>
+</form>
+<mat-list class="song-list">
+    <mat-list-item *ngFor="let song of songs">
+        {{song.songName}} - {{song.songDuration}}
+    </mat-list-item>
+</mat-list>

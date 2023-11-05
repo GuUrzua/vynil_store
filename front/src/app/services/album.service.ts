@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment.dev';
 import { Album, AlbumResponse } from '../models/Album.model';
@@ -7,9 +7,6 @@ import { Album, AlbumResponse } from '../models/Album.model';
   providedIn: 'root'
 })
 export class AlbumService {
-    headers = new HttpHeaders({
-        'Content-Type': 'multipart/form-data;boundary=------------------XXXXXXXXXXXX',
-    });
 
   constructor(private http: HttpClient) { }
 

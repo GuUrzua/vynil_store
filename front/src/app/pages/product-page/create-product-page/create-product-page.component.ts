@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Album } from 'src/app/models/Album.model';
+import { SongUpload } from 'src/app/models/Song.model';
 import { AlbumService } from 'src/app/services/album.service';
+import { SongService } from 'src/app/services/song.service';
 
 @Component({
   templateUrl: './create-product-page.component.html',
@@ -13,6 +15,7 @@ export class CreateProductPageComponent{
     constructor(
         private albumService: AlbumService,
         private snackBar: MatSnackBar,
+        private songService: SongService,
     ) {}
 
     onSubmit(event: Album) {
@@ -20,8 +23,20 @@ export class CreateProductPageComponent{
     }
 
     postAlbum(album: Album) {
+        const songUploadList: SongUpload[] = [];
+        album.songs.forEach(song => {
+            const songUpload: SongUpload = {
+                songName: song.songName,
+                songDuration: song.songDuration,
+                albumName: album.name
+
+            }
+            songUploadList.push(songUpload);
+        })
         this.albumService.createAlbum(album).subscribe(() => {
-            this.openSnackBar("Album Criado com sucesso!");
+            this.songService.postSongs(songUploadList).subscribe(() => {
+                this.openSnackBar("Album Criado com sucesso!");
+            })
         })
     }
 

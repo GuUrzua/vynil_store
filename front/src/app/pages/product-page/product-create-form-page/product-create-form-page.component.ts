@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Album } from 'src/app/models/Album.model';
+import { Song } from 'src/app/models/Song.model';
 
 @Component({
   selector: 'app-product-create-form-page',
@@ -13,6 +14,7 @@ export class ProductCreateFormPageComponent implements OnInit {
     form!: FormGroup;
     displayFileName: string | undefined;
     fileStore!: FileList | null;
+    songList!: Array<Song>;
 
     constructor(private formBuilder: FormBuilder) {}
 
@@ -25,7 +27,7 @@ export class ProductCreateFormPageComponent implements OnInit {
             albumCover: new FormControl(""),
             name: [this.formData.name, Validators.required],
             artist: [this.formData.artist, Validators.required],
-            releaseDate: [this.formData.releaseDate, Validators.required]
+            releaseDate: [this.formData.releaseDate, Validators.required],
         })
     }
 
@@ -44,6 +46,7 @@ export class ProductCreateFormPageComponent implements OnInit {
                 name: this.form.controls['name'].value,
                 artist: this.form.controls['artist'].value,
                 releaseDate: this.form.controls['releaseDate'].value,
+                songs: this.songList
             };
 
             this.submitAlbum.emit(request);
@@ -53,5 +56,9 @@ export class ProductCreateFormPageComponent implements OnInit {
                 this.form.reset();
             }, 100);
         }
+    }
+
+    setSongList(songList: Array<Song>) {
+        this.songList = songList
     }
 }
