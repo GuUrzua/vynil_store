@@ -1,0 +1,18 @@
+@startuml Casos De Uso
+    left to right direction
+    package System {
+        usecase "Criar um Album" as CreateAlbum
+        useCase "Cria Músicas para um Album" as CreateSongs
+        usecase "Visualiza lista com Albuns" as VisualizeAlbums
+        usecase "Visualiza Detalhes dos Albuns" as VisualizeAlbumDetails
+        usecase "Compra um ou mais Albums" as BuyAlbums
+    }
+
+    :Admin: --> CreateAlbum
+    :Admin: --> CreateSongs
+
+    :User: --> VisualizeAlbums
+    :User: --> VisualizeAlbumDetails
+    :User: --> BuyAlbums
+
+@enduml
