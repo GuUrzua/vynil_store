@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.vynilStore.vynilStore.DTO.SongData;
 import com.vynilStore.vynilStore.DTO.SongDownloadDTO;
 import com.vynilStore.vynilStore.DTO.SongUploadDTO;
 import com.vynilStore.vynilStore.entity.Album;

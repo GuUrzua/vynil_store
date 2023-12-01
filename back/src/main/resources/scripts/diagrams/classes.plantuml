@@ -1,0 +1,47 @@
+@startuml Diagrama
+    class Album {
+        -Integer id
+        -String name
+        -Array<byte> albumCover
+        -String artist
+        -LocalDate releaseDate
+        -Array<Song> songs
+    }
+    
+    class AlbumService {
+        +createAlbum()
+        +getAlbums()
+        -compressImage()
+        -decompressImage()
+        +getAlbumByName()
+    }
+
+    class AlbumController {
+        +createAlbum() : POST
+        +getAlbums() : GET
+    }
+
+    class Song {
+        -Integer id
+        -String title
+        -LocalTime songDuration
+        -Album album
+    }
+
+    class SongService {
+        +postSongs()
+        +getSongs()
+    }
+
+    class SongController {
+        +postSongs()
+        +getSongsByAlbum()
+    }
+
+    Song--> Album : pertence à
+    Song-->SongService
+    SongService-->SongController
+    Album-->AlbumService
+    AlbumService-->AlbumController
+
+@enduml
